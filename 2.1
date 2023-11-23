@@ -1,29 +1,20 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Structure pour représenter une opération
 typedef struct {
     int id;
-    // Ajoutez d'autres propriétés nécessaires ici
-} Operation;
+} Ope;
 
-// Fonction pour répartir les opérations en fonction de la contrainte d'exclusion
-void repartitionExclusion(Operation operations[], int nbOperations, int m) {
-    // Liste des paires d'opérations incompatibles (à adapter selon vos données)
-    int exclusionPairs[][2] = {{1, 2}, {3, 4}, {5, 6}};
-
-    // Nombre de stations
+void repartitionExclu(Ope operations[], int nbOperations, int m) {
+    int excluPairs[][2] = {{1, 2}, {3, 4}, {5, 6}};
     int nbStations = 0;
-
-    // Parcours des opérations
     for (int i = 0; i < nbOperations; ++i) {
         bool compatible = true;
 
-        // Vérification de l'exclusion avec les opérations déjà placées
         for (int j = 0; j < i; ++j) {
-            for (int k = 0; k < sizeof(exclusionPairs) / sizeof(exclusionPairs[0]); ++k) {
-                if ((operations[i].id == exclusionPairs[k][0] && operations[j].id == exclusionPairs[k][1]) ||
-                    (operations[i].id == exclusionPairs[k][1] && operations[j].id == exclusionPairs[k][0])) {
+            for (int k = 0; k < sizeof(excluPairs) / sizeof(excluPairs[0]); ++k) {
+                if ((operations[i].id == excluPairs[k][0] && operations[j].id == excluPairs[k][1]) ||
+                    (operations[i].id == excluPairs[k][1] && operations[j].id == excluPairs[k][0])) {
                     compatible = false;
                     break;
                 }
@@ -32,28 +23,20 @@ void repartitionExclusion(Operation operations[], int nbOperations, int m) {
                 break;
             }
         }
-
-        // Si compatible, placez l'opération dans une station existante ou nouvelle
         if (compatible) {
             printf("Operation %d placee dans la station %d\n", operations[i].id, nbStations + 1);
         } else {
-            // Créez une nouvelle station
             nbStations++;
             printf("Operation %d placee dans une nouvelle station %d\n", operations[i].id, nbStations);
         }
     }
-
-    // Affichez le nombre total de stations
     printf("Nombre total de stations : %d\n", nbStations);
 }
 
 int main() {
-    // Exemple d'utilisation
-    Operation operations[] = {{1}, {2}, {3}, {4}, {5}, {6}};
+    Ope operations[] = {{1}, {2}, {3}, {4}, {5}, {6}};
     int nbOperations = sizeof(operations) / sizeof(operations[0]);
-    int m = 3; // Nombre de stations
-
-    repartitionExclusion(operations, nbOperations, m);
-
+    int m = 3;
+    repartitionExclu(operations, nbOperations, m);
     return 0;
 }
