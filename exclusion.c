@@ -100,12 +100,12 @@ void afficherStations(int *couleur, int maxOp) {
     }
 
     for (int i = 0; i < nombreStations; i++) {
-        printf("Station%d: ", i + 1);
+        printf("\nStation%d: ", i + 1);
         for (int j = 0; j < tailleStations[i]; j++) {
             printf("Operation %d", stations[i][j]);
             if (j < tailleStations[i] - 1) printf(", ");
         }
-        printf("\n\n");
+        printf("\n");
         free(stations[i]);
     }
 
