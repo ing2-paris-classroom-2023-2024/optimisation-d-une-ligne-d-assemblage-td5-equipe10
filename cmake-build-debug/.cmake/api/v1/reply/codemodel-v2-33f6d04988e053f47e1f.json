@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "optimisation_d_une_ligne_d_assemblage_td5_equipe10",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "optimisation_d_une_ligne_d_assemblage_td5_equipe10::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-optimisation_d_une_ligne_d_assemblage_td5_equipe10-Debug-1e7865f6f2a1a79c9279.json",
+					"name" : "optimisation_d_une_ligne_d_assemblage_td5_equipe10",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Projet th\u00e9orie des graphes/optimisation-d-une-ligne-d-assemblage-td5-equipe10/cmake-build-debug",
+		"source" : "C:/Projet th\u00e9orie des graphes/optimisation-d-une-ligne-d-assemblage-td5-equipe10"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
