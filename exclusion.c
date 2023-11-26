@@ -98,14 +98,14 @@ void afficherStations(int *couleur, int maxOp) {
         int station = couleur[i];
         stations[station][tailleStations[station]++] = i;
     }
-
+    printf("\nExclusion:\n");
     for (int i = 0; i < nombreStations; i++) {
-        printf("\nStation%d: ", i + 1);
+        printf("Station%d: ", i + 1);
         for (int j = 0; j < tailleStations[i]; j++) {
             printf("Operation %d", stations[i][j]);
             if (j < tailleStations[i] - 1) printf(", ");
         }
-        printf("\n");
+        printf("\n\n");
         free(stations[i]);
     }
 
