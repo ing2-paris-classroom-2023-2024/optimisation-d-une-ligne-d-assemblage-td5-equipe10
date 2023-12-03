@@ -4,8 +4,8 @@
 #include "precedence.h"
 
 int main() {
-    optimiserChaineAssemblage("exclusions.txt");
-    traiterLignesAssemblage("tempsOperations.txt", "cycle.txt");
-    effectuerTriTopologiqueDepuisFichier("Precedences.txt");
+    exclusion("exclusions.txt");
+    cycle("tempsOperations.txt", "cycle.txt");
+    precedence("Precedences.txt");
     return 0;
 }

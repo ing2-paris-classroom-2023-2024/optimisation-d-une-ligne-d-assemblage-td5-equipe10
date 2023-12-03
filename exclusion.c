@@ -113,7 +113,7 @@ void afficherStations(int *couleur, int maxOp) {
     free(tailleStations);
 }
 
-void optimiserChaineAssemblage(const char *nomFichier) {
+void exclusion(const char *nomFichier) {
     PaireExclusion *paires;
     int compteurPaires = lirePairesExclusion(nomFichier, &paires);
 

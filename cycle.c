@@ -85,7 +85,7 @@ void assignerOperationsAuxStations(Operation *operations, int compte, float temp
     free(stations);
 }
 
-void traiterLignesAssemblage(const char* fichierOperations, const char* fichierTempsCycle) {
+void cycle(const char* fichierOperations, const char* fichierTempsCycle) {
     int compte;
     Operation *operations = lireOperations(fichierOperations, &compte);
     float tempsCycle = lireTempsCycle(fichierTempsCycle);

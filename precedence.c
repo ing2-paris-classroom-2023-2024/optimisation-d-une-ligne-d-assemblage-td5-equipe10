@@ -88,7 +88,7 @@ void triTopologique(Noeud** graphe, int* degreEntrant, int nombreNoeuds) {
     free(file);
 }
 
-void effectuerTriTopologiqueDepuisFichier(const char* nomFichier) {
+void precedence(const char* nomFichier) {
     initialiserMappage();
 
     FILE* fichier = fopen(nomFichier, "r");

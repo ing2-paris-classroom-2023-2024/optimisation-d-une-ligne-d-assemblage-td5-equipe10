@@ -12,6 +12,6 @@ typedef struct {
     float tempsTotal;
 } Station;
 
-void traiterLignesAssemblage(const char* fichierOperations, const char* fichierTempsCycle);
+void cycle(const char* fichierOperations, const char* fichierTempsCycle);
 
 #endif // CYCLE_H

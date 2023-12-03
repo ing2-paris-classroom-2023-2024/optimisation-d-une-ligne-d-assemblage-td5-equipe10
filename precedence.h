@@ -18,6 +18,6 @@ int obtenirIndice(int cle);
 Noeud* creerNoeud(int destination);
 void ajouterArc(Noeud** graphe, int depart, int arrivee);
 void triTopologique(Noeud** graphe, int* degreEntrant, int nombreNoeuds);
-void effectuerTriTopologiqueDepuisFichier(const char* nomFichier);
+void precedence(const char* nomFichier);
 
 #endif // PRECEDENCE_H
