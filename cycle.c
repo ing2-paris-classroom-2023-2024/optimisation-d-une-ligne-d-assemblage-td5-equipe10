@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// Comparer deux operations en foction de leur durée.
 int comparerOperations(const void *a, const void *b) {
     Operation *opA = (Operation *)a;
     Operation *opB = (Operation *)b;
     return (opB->duree > opA->duree) - (opB->duree < opA->duree);
 }
 
+// Lire le temps de cycle depuis un fichier et le retourner.
 float lireTempsCycle(const char* nomFichier) {
     FILE *fichier = fopen(nomFichier, "r");
     if (!fichier) {
@@ -22,6 +24,7 @@ float lireTempsCycle(const char* nomFichier) {
     return tempsCycle;
 }
 
+// Lire les opérations depuis u n fichier et les stocker dans un tableau.
 Operation* lireOperations(const char* nomFichier, int *compte) {
     FILE *fichier = fopen(nomFichier, "r");
     if (!fichier) {
@@ -45,6 +48,7 @@ Operation* lireOperations(const char* nomFichier, int *compte) {
     return operations;
 }
 
+// Assigner les opérations aux statioons de travail en respectantt le temps de cycle.
 void assignerOperationsAuxStations(Operation *operations, int compte, float tempsCycle) {
     qsort(operations, compte, sizeof(Operation), comparerOperations);
 
@@ -85,6 +89,7 @@ void assignerOperationsAuxStations(Operation *operations, int compte, float temp
     free(stations);
 }
 
+// Fonction principale pour lire les données, assigner les opérations et afficher les résultatds.
 void cycle(const char* fichierOperations, const char* fichierTempsCycle) {
     int compte;
     Operation *operations = lireOperations(fichierOperations, &compte);

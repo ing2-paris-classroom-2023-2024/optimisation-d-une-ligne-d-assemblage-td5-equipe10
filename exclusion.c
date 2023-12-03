@@ -1,9 +1,9 @@
-// exclusion.c
 #include "exclusion.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
+// Lire les paires d'exclusion depuis un fichier et les stocker dans un tableau.
 int lirePairesExclusion(const char *nomFichier, PaireExclusion **paires) {
     FILE *fichier = fopen(nomFichier, "r");
     if (!fichier) {
@@ -26,12 +26,14 @@ int lirePairesExclusion(const char *nomFichier, PaireExclusion **paires) {
     return compteurPaires;
 }
 
+// Comparer deux sommets (utilisé pour le tri) en fonction de leur degré.
 int comparerSommets(const void *a, const void *b) {
     Sommet *sommetA = (Sommet *)a;
     Sommet *sommetB = (Sommet *)b;
     return sommetB->degre - sommetA->degre;
 }
 
+// Trier les sommets par ordre décroissant de degré.
 void trierSommetsParDegre(Sommet *sommets, int nombreSommets, PaireExclusion *paires, int compteurPaires) {
     for (int i = 0; i < compteurPaires; i++) {
         sommets[paires[i].operation1].degre++;
@@ -41,6 +43,7 @@ void trierSommetsParDegre(Sommet *sommets, int nombreSommets, PaireExclusion *pa
     qsort(sommets, nombreSommets + 1, sizeof(Sommet), comparerSommets);
 }
 
+// Colorer les sommets du graphe en utilisantt l'algorithme de Welsh-Powell.
 void colorerGrapheWelshPowell(PaireExclusion *paires, int compteurPaires, Sommet *sommets, int nombreSommets, int **couleur) {
     bool *disponible = malloc((nombreSommets + 1) * sizeof(bool));
 
@@ -78,6 +81,7 @@ void colorerGrapheWelshPowell(PaireExclusion *paires, int compteurPaires, Sommet
     free(disponible);
 }
 
+// Afficher la répartition ds opérations dans les différrentes stations.
 void afficherStations(int *couleur, int maxOp) {
     int nombreStations = 0;
     for (int i = 1; i <= maxOp; i++) {
@@ -113,6 +117,7 @@ void afficherStations(int *couleur, int maxOp) {
     free(tailleStations);
 }
 
+// Fonction principalee pour lire les donnée, appliquer l'algorithme de coloration et afficher les résultatss.
 void exclusion(const char *nomFichier) {
     PaireExclusion *paires;
     int compteurPaires = lirePairesExclusion(nomFichier, &paires);

@@ -6,6 +6,7 @@ Mapping* mappage;
 int tailleMappage = 0;
 int capaciteMappage = 10;
 
+// Initialise le mapage avec une capacite initiale donnée.
 void initialiserMappage() {
     mappage = (Mapping*) malloc(capaciteMappage * sizeof(Mapping));
     for (int i = 0; i < capaciteMappage; ++i) {
@@ -14,10 +15,12 @@ void initialiserMappage() {
     }
 }
 
+// Liberre la mémoire alloué pour le mappage.
 void libererMappage() {
     free(mappage);
 }
 
+// Ajoute une nouvelle paire clé-valeur au mappage, en agrandissant la capacité si nécessaire.
 void ajouterMappage(int cle, int valeur) {
     if (tailleMappage == capaciteMappage) {
         capaciteMappage *= 2;
@@ -28,6 +31,7 @@ void ajouterMappage(int cle, int valeur) {
     tailleMappage++;
 }
 
+// Retourne l'indice correspondant à une clé donné, en ajoutant la clé si elle n'existe pas.
 int obtenirIndice(int cle) {
     for (int i = 0; i < tailleMappage; ++i) {
         if (mappage[i].cle == cle) {
@@ -38,6 +42,7 @@ int obtenirIndice(int cle) {
     return tailleMappage - 1;
 }
 
+// Créé un nouveau nœud pour le graphe.
 Noeud* creerNoeud(int destination) {
     Noeud* nouveauNoeud = (Noeud*) malloc(sizeof(Noeud));
     nouveauNoeud->destination = destination;
@@ -45,6 +50,7 @@ Noeud* creerNoeud(int destination) {
     return nouveauNoeud;
 }
 
+// Ajoute un arc au graphe en créant un nœud et en le liant à la liste des arcs.
 void ajouterArc(Noeud** graphe, int depart, int arrivee) {
     int indexDepart = obtenirIndice(depart);
     int indexArrivee = obtenirIndice(arrivee);
@@ -54,6 +60,7 @@ void ajouterArc(Noeud** graphe, int depart, int arrivee) {
     graphe[indexDepart] = nouveauNoeud;
 }
 
+// Effectue un tri topologique sur le graphe et imprimee l'ordre de précédence.
 void triTopologique(Noeud** graphe, int* degreEntrant, int nombreNoeuds) {
     int* file = (int*) malloc(nombreNoeuds * sizeof(int));
     int debut = 0, fin = 0;
@@ -88,6 +95,7 @@ void triTopologique(Noeud** graphe, int* degreEntrant, int nombreNoeuds) {
     free(file);
 }
 
+// Lit un fichier pour construire un graphe et effectuerr un tri topologique pour déterminer la précédencee.
 void precedence(const char* nomFichier) {
     initialiserMappage();
 
